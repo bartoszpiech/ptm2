@@ -17,87 +17,56 @@
 #define abi(reg,bit)	reg ^= (_BV(bit))
 #endif
 
-char __keypad[4][4] = {
-	{ '7', '8', '9', '-' },
-	{ '4', '5', '6', '+' },
-	{ '1', '2', '3', 'C' },
-	{ '*', '0', '#', '=' },
-};
-
-char keypad[3][4] = {
-	{ '3', '6', '9', '#' },
-	{ '2', '5', '8', '0' },
-	{ '1', '4', '7', '*' },
-};
-
-int _keypad[4][4] = {
-	{ 7,	 8,	 9,	 '-' },
-	{ 4,	 5,	 6,	 '+' },
-	{ 1,	 2,	 3,	 'C' },
-	{ '*', 0,	'#', '=' },
-};
-
 int diodes[8] = {0};
+char pins_c[] = {PC0, PC1, PC2, PC3, PC4, PC5, PC6, PC7};
+
+char keypad[4][4] = {
+	{ '-', '+', 'C', '=' },
+	{ '9', '6', '3', '#' },
+	{ '8', '5', '2', '0' },
+	{ '7', '4', '1', '*' },
+};
 
 void set_led(uint8_t led, uint8_t stan);
 char get_key();
 
 int main() {
 	DDRD = 0xFF;
-	//DDRC = 0x00;
+	DDRC = 0x00;
 	while(1) {
-		char num = get_key();
-		switch(num) {
-			case '0':
-				set_led(0, 1);
-				break;
-			case '1':
-				set_led(1, 1);
-				break;
-			case '2':
-				set_led(2, 1);
-				break;
-			case '3':
-				set_led(3, 1);
-				break;
-			case '4':
-				set_led(4, 1);
-				break;
-			case '5':
-				set_led(5, 1);
-				break;
-			case '6':
-				set_led(6, 1);
-				break;
-			case '7':
-				set_led(7, 1);
-				break;
-		}
-		/*
+		char ch = get_key();
+		int num = ch - '0';
 		if (num > -1 && num < 9) {
 			diodes[num] = !diodes[num];
 			set_led(num, diodes[num]);
 		} else {
-			switch(num) {
+			switch(ch) {
 				case '*':
 					for (int i = 0; i < 8; i++) {
 						diodes[i] = 1;
-						set_led(i, diodes[i]);
+						set_led(i+1, diodes[i]);
 					}
 					break;
 				case '#':
 					for (int i = 0; i < 8; i++) {
 						diodes[i] = 0;
-						set_led(i, diodes[i]);
+						set_led(i+1, diodes[i]);
 					}
 					break;
 			}
 		}
-		*/
 	}
 }
 
 void set_led(uint8_t led, uint8_t stan) {
+	if (stan == 1) {
+	sbi(PORTD, led-1);
+	} else {
+		cbi(PORTD, led-1);
+	}
+}
+
+void _set_led(uint8_t led, uint8_t stan) {
 	switch(led) {
 		case 0:
 			if (stan == 1) {
@@ -158,34 +127,19 @@ void set_led(uint8_t led, uint8_t stan) {
 	}
 }
 
-/*
+
 char get_key() {
 	for (int i = 0; i < 4; i++) {
 		sbi(PORTC, i + 4);
-		for (int row = 0; row < 4; row++) {
-			if (bit_is_set(PINC, row)) {
-				while(!bit_is_clear(PINC, row)) {
-					_delay_ms(10);
-				}
-				return keypad[i][row];
+		for (int j = 0; j < 4; j++) {
+			if (bit_is_set(PINC, pins_c[0])) { // tutaj nie wiem musze sprawdzac PC0
+				return keypad[i][0];						 // moze bug simulide
 			}
-			cbi(PORTC, i + 4);
+			if (bit_is_set(PINC, pins_c[j])) {
+				return keypad[i][j];
+			}
 		}
-	}
-	return -1;
-}
-*/
-
-char get_key() {
-	for (int i = 0; i < 3; i++) {
-		sbi(PORTC, i + 4);
-		for (int row = 0; row < 4; row++) 
-			if (bit_is_set(PINC, row)) {
-				while(!bit_is_clear(PINC, row))
-					_delay_ms(10);
-				return keypad[i][row];
-			}
-		cbi(PORTC, i+4);
+		cbi(PORTC, i + 4);
 	}
 	return 'X';
 }

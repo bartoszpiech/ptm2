@@ -1,8 +1,5 @@
 <circuit animate="0" reactStep="50" type="simulide_0.4" speed="1000000" noLinAcc="5">
  
-KeyPad-112: 
-<item hflip="1" x="-196" labely="-16" objectName="KeyPad-112" rotation="0" labelrot="0" Cols="3" valLabely="0" id="KeyPad-112" itemtype="KeyPad" vflip="1" y="-232" valLabRot="0" Rows="4" Key_Labels="123456789*0#" valLabelx="0" labelx="-8" Show_id="false"/>
- 
 Node-19: 
 <item x="-228" itemtype="Node" labelx="-16" vflip="1" valLabRot="0" valLabely="0" y="116" hflip="1" labelrot="0" labely="-24" Show_id="false" objectName="Node-19" id="Node-58" rotation="0" valLabelx="0"/>
  
@@ -58,7 +55,7 @@ LedBar-2:
 <item hflip="-1" x="-272" labely="-44" objectName="LedBar-2" Threshold="2.4" rotation="-90" labelrot="0" Resistance="0.6" valLabely="0" id="LedBar-2" itemtype="LedBar" vflip="-1" y="44" Color="0" Size="8" valLabRot="0" valLabelx="0" Grounded="false" labelx="-16" Show_id="false" MaxCurrent="0.03"/>
  
 KeyPad-1: 
-<item hflip="1" x="-108" labely="-16" objectName="KeyPad-1" rotation="0" labelrot="0" Cols="4" valLabely="0" id="KeyPad-105" itemtype="KeyPad" vflip="1" y="-312" valLabRot="0" Rows="4" Key_Labels="789-456+123C*0#=" valLabelx="0" labelx="-8" Show_id="false"/>
+<item hflip="1" x="-196" labely="-16" objectName="KeyPad-1" rotation="0" labelrot="0" Cols="4" valLabely="0" id="KeyPad-105" itemtype="KeyPad" vflip="1" y="-232" valLabRot="0" Rows="4" Key_Labels="789-456+123C*0#=" valLabelx="0" labelx="-8" Show_id="false"/>
  
 Connector-20: 
 <item hflip="1" x="-304" labely="-24" objectName="Connector-20" rotation="0" labelrot="0" startpinid="Resistor-11-rPin" valLabely="0" pointList="-304,108,-304,116,-296,116" id="Connector-31" enodeid="Circ_eNode-21" itemtype="Connector" vflip="1" y="108" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="Node-16-0"/>
@@ -153,26 +150,29 @@ Connector-64:
 Connector-80: 
 <item hflip="1" x="-256" labely="-24" objectName="Connector-80" rotation="0" labelrot="0" startpinid="LedBar-2-led1-pinP" valLabely="0" pointList="-256,28,-256,-24,-324,-24,-324,-80" id="Connector-98" enodeid="Circ_eNode-81" itemtype="Connector" vflip="1" y="28" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PD6"/>
  
-Connector-114: 
-<item hflip="1" x="-148" labely="-24" objectName="Connector-114" rotation="0" labelrot="0" startpinid="KeyPad-112-Pin1" valLabely="0" pointList="-148,-208,-100,-208,-100,-96,-260,-96" id="Connector-114" enodeid="enode-114" itemtype="Connector" vflip="1" y="-208" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC1"/>
+Connector-126: 
+<item hflip="1" x="-132" labely="-24" objectName="Connector-126" rotation="0" labelrot="0" startpinid="KeyPad-1-Pin0" valLabely="0" pointList="-132,-224,-96,-224,-96,-88,-260,-88" id="Connector-126" enodeid="enode-126" itemtype="Connector" vflip="1" y="-224" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC0"/>
  
-Connector-115: 
-<item hflip="1" x="-148" labely="-24" objectName="Connector-115" rotation="0" labelrot="0" startpinid="KeyPad-112-Pin2" valLabely="0" pointList="-148,-192,-116,-192,-116,-104,-260,-104" id="Connector-115" enodeid="enode-115" itemtype="Connector" vflip="1" y="-192" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC2"/>
+Connector-127: 
+<item hflip="1" x="-260" labely="-24" objectName="Connector-127" rotation="0" labelrot="0" startpinid="atmega32-4-PC1" valLabely="0" pointList="-260,-96,-108,-96,-108,-208,-132,-208" id="Connector-127" enodeid="enode-127" itemtype="Connector" vflip="1" y="-96" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="KeyPad-1-Pin1"/>
  
-Connector-116: 
-<item hflip="1" x="-148" labely="-24" objectName="Connector-116" rotation="0" labelrot="0" startpinid="KeyPad-112-Pin3" valLabely="0" pointList="-148,-176,-148,-112,-260,-112" id="Connector-116" enodeid="enode-116" itemtype="Connector" vflip="1" y="-176" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC3"/>
+Connector-128: 
+<item hflip="1" x="-132" labely="-24" objectName="Connector-128" rotation="0" labelrot="0" startpinid="KeyPad-1-Pin2" valLabely="0" pointList="-132,-192,-116,-192,-116,-104,-260,-104" id="Connector-128" enodeid="enode-128" itemtype="Connector" vflip="1" y="-192" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC2"/>
  
-Connector-117: 
-<item hflip="1" x="-164" labely="-24" objectName="Connector-117" rotation="0" labelrot="0" startpinid="KeyPad-112-Pin6" valLabely="0" pointList="-164,-160,-164,-120,-260,-120" id="Connector-117" enodeid="enode-117" itemtype="Connector" vflip="1" y="-160" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC4"/>
+Connector-129: 
+<item hflip="1" x="-132" labely="-24" objectName="Connector-129" rotation="0" labelrot="0" startpinid="KeyPad-1-Pin3" valLabely="0" pointList="-132,-176,-124,-176,-124,-112,-260,-112" id="Connector-129" enodeid="enode-129" itemtype="Connector" vflip="1" y="-176" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC3"/>
  
-Connector-118: 
-<item hflip="1" x="-180" labely="-24" objectName="Connector-118" rotation="0" labelrot="0" startpinid="KeyPad-112-Pin5" valLabely="0" pointList="-180,-160,-180,-128,-260,-128" id="Connector-118" enodeid="enode-118" itemtype="Connector" vflip="1" y="-160" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC5"/>
+Connector-130: 
+<item hflip="1" x="-148" labely="-24" objectName="Connector-130" rotation="0" labelrot="0" startpinid="KeyPad-1-Pin7" valLabely="0" pointList="-148,-160,-148,-120,-260,-120" id="Connector-130" enodeid="enode-130" itemtype="Connector" vflip="1" y="-160" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC4"/>
  
-Connector-120: 
-<item hflip="1" x="-148" labely="-24" objectName="Connector-120" rotation="0" labelrot="0" startpinid="KeyPad-112-Pin0" valLabely="0" pointList="-148,-224,-84,-224,-84,-88,-260,-88" id="Connector-120" enodeid="enode-120" itemtype="Connector" vflip="1" y="-224" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC0"/>
+Connector-131: 
+<item hflip="1" x="-164" labely="-24" objectName="Connector-131" rotation="0" labelrot="0" startpinid="KeyPad-1-Pin6" valLabely="0" pointList="-164,-160,-164,-128,-260,-128" id="Connector-131" enodeid="enode-131" itemtype="Connector" vflip="1" y="-160" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC5"/>
  
-Connector-121: 
-<item hflip="1" x="-260" labely="-24" objectName="Connector-121" rotation="0" labelrot="0" startpinid="atmega32-4-PC6" valLabely="0" pointList="-260,-136,-196,-136,-196,-160" id="Connector-121" enodeid="enode-121" itemtype="Connector" vflip="1" y="-136" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="KeyPad-112-Pin4"/>
+Connector-132: 
+<item hflip="1" x="-180" labely="-24" objectName="Connector-132" rotation="0" labelrot="0" startpinid="KeyPad-1-Pin5" valLabely="0" pointList="-180,-160,-180,-136,-260,-136" id="Connector-132" enodeid="enode-132" itemtype="Connector" vflip="1" y="-160" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC6"/>
+ 
+Connector-133: 
+<item hflip="1" x="-196" labely="-24" objectName="Connector-133" rotation="0" labelrot="0" startpinid="KeyPad-1-Pin4" valLabely="0" pointList="-196,-160,-196,-144,-260,-144" id="Connector-133" enodeid="enode-133" itemtype="Connector" vflip="1" y="-160" valLabRot="0" valLabelx="0" labelx="-16" Show_id="false" endpinid="atmega32-4-PC7"/>
  
 PlotterWidget-84: 
 <item height="200" MinVolt="-500" pos="" rect="" windowIcon="" updatesEnabled="true" minimumHeight="200" font=".AppleSystemUIFont,13,-1,5,50,0,0,0,0,0" windowTitle="" Scale="1" layoutDirection="0" acceptDrops="false" windowFilePath="" accessibleDescription="" baseSize="" minimumSizeHint="" minimized="false" sizeHint="" minimumWidth="200" maximumWidth="1000" y="0" sizeIncrement="" whatsThis="" styleSheet="" locale="" isActiveWindow="false" itemtype="Plotter" sizePolicy="" normalGeometry="" cursor="" minimumSize="" fullScreen="false" objectName="PlotterWidget-84" size="" maximumHeight="200" windowOpacity="1" visible="false" mouseTracking="false" Tracks="1" x="0" toolTipDuration="-1" statusTip="" accessibleName="" frameSize="" childrenRegion="" windowModified="false" windowModality="0" MaxVolt="500" focusPolicy="0" windowIconText="" modal="false" maximumSize="" frameGeometry="" enabled="true" contextMenuPolicy="1" focus="false" childrenRect="" tabletTracking="false" autoFillBackground="false" geometry="" maximized="false" width="200" inputMethodHints="0" palette="" toolTip=""/>

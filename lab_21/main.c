@@ -66,68 +66,6 @@ void set_led(uint8_t led, uint8_t stan) {
 	}
 }
 
-void _set_led(uint8_t led, uint8_t stan) {
-	switch(led) {
-		case 0:
-			if (stan == 1) {
-				sbi(PORTD, PD0);
-			} else {
-				cbi(PORTD, PD0);
-			}
-			break;
-		case 1:
-			if (stan == 1) {
-				sbi(PORTD, PD1);
-			} else {
-				cbi(PORTD, PD1);
-			}
-			break;
-		case 2:
-			if (stan == 1) {
-				sbi(PORTD, PD2);
-			} else {
-				cbi(PORTD, PD2);
-			}
-			break;
-		case 3:
-			if (stan == 1) {
-				sbi(PORTD, PD3);
-			} else {
-				cbi(PORTD, PD3);
-			}
-			break;
-		case 4:
-			if (stan == 1) {
-				sbi(PORTD, PD4);
-			} else {
-				cbi(PORTD, PD4);
-			}
-			break;
-		case 5:
-			if (stan == 1) {
-				sbi(PORTD, PD5);
-			} else {
-				cbi(PORTD, PD5);
-			}
-			break;
-		case 6:
-			if (stan == 1) {
-				sbi(PORTD, PD6);
-			} else {
-				cbi(PORTD, PD6);
-			}
-			break;
-		case 7:
-			if (stan == 1) {
-				sbi(PORTD, PD7);
-			} else {
-				cbi(PORTD, PD7);
-			}
-			break;
-	}
-}
-
-
 char get_key() {
 	for (int i = 0; i < 4; i++) {
 		sbi(PORTC, i + 4);

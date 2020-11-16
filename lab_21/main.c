@@ -18,13 +18,12 @@
 #endif
 
 int diodes[8] = {0};
-char pins_c[] = {PC0, PC1, PC2, PC3, PC4, PC5, PC6, PC7};
 
 char keypad[4][4] = {
-	{ '-', '+', 'C', '=' },
-	{ '9', '6', '3', '#' },
-	{ '8', '5', '2', '0' },
-	{ '7', '4', '1', '*' },
+	{ '*', '0', '#', '=' },
+	{ '1', '2', '3', 'C' },
+	{ '4', '5', '6', '+' },
+	{ '7', '8', '9', '-' },
 };
 
 void set_led(uint8_t led, uint8_t stan);
@@ -41,13 +40,13 @@ int main() {
 			set_led(num, diodes[num]);
 		} else {
 			switch(ch) {
-				case '*':
+				case '#':
 					for (int i = 0; i < 8; i++) {
 						diodes[i] = 1;
 						set_led(i+1, diodes[i]);
 					}
 					break;
-				case '#':
+				case '*':
 					for (int i = 0; i < 8; i++) {
 						diodes[i] = 0;
 						set_led(i+1, diodes[i]);
@@ -70,10 +69,10 @@ char get_key() {
 	for (int i = 0; i < 4; i++) {
 		sbi(PORTC, i + 4);
 		for (int j = 0; j < 4; j++) {
-			if (bit_is_set(PINC, pins_c[0])) { // tutaj nie wiem musze sprawdzac PC0
-				return keypad[i][0];						 // moze bug simulide
-			}
-			if (bit_is_set(PINC, pins_c[j])) {
+			if (bit_is_set(PINC, j)) {
+				while(bit_is_set(PINC, j)) {
+					_delay_ms(10);
+				}
 				return keypad[i][j];
 			}
 		}

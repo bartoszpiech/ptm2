@@ -1,0 +1,82 @@
+#define F_CPU 8000000UL
+#include <avr/io.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <util/delay.h>
+#include <avr/sfr_defs.h>
+#include <math.h>
+#include <avr/interrupt.h>
+#include <avr/pgmspace.h>
+
+#include "HD44780.h"
+
+#ifndef _BV
+#define _BV(bit)			(1<<(bit))
+#endif
+#ifndef sbi
+#define sbi(reg,bit)	reg |= (_BV(bit))
+#endif
+#ifndef cbi
+#define cbi(reg,bit)	reg &= ~(_BV(bit))
+#endif
+#ifndef abi
+#define abi(reg,bit)	reg ^= (_BV(bit))
+#endif
+
+void
+ADC_init();
+
+uint16_t
+ADC_10bit(uint8_t pin_number);
+
+
+int main() {
+    char text[2][20];
+    float voltage[2];
+    ADC_init();
+    LCD_Initialize();
+    LCD_Home();
+    while(1) {
+	for (int i = 0; i < 2; i++) {
+	    voltage[0] = ADC_10bit(i) * 5 / 1024.;
+	    voltage[1] = voltage[0] / 5 * 100;
+	    dtostrf( voltage[0], 4, 2, text[0]);
+	    dtostrf( voltage[1], 4, 2, text[1]);
+	    //LCD_Clear();
+	    LCD_GoTo(0,i);
+	    LCD_WriteText(text[0]);
+	    LCD_WriteText("V, ");
+	    LCD_WriteText(text[1]);
+	    LCD_WriteText("%");
+	}
+    }
+}
+
+void
+ADC_init() { 
+    sbi(ADMUX, REFS0);	// ustawienie napiecia avcc
+    cbi(ADMUX, REFS1);
+
+    sbi(ADCSRA, ADPS0);	// ustawienie czestotliwosci mniejszej
+    sbi(ADCSRA, ADPS1);	// niz 100kHz (8Mhz / 128) = 62,5kHz < 100kHz
+    sbi(ADCSRA, ADPS2);
+
+    sbi(ADCSRA, ADEN);	// uruchomienie ukladu przetwornika ADC
+}
+
+uint16_t
+ADC_10bit(uint8_t pin_number) {
+    if (pin_number == 0) {
+	cbi(ADMUX, MUX0);
+    } else if (pin_number == 1) {
+	sbi(ADMUX, MUX0);
+    } else {
+	return -1;  // blad
+    }
+    sbi(ADCSRA, ADSC);
+    while (bit_is_set(ADCSRA, ADSC)) { }
+    return ADC;
+}
+
+

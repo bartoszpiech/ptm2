@@ -37,7 +37,7 @@ void
 two_step_hyst(uint8_t requested, uint8_t real);
 
 void
-three_step(uint8_t requested_1, uint8_t requested_2, uint8_t real);
+three_step(uint8_t requested, uint8_t real);
 
 void set_led(uint8_t led, uint8_t state);
 
@@ -46,7 +46,6 @@ int main() {
     DDRD = 0xFF;
     char text[2][20];
     float voltage[2];
-    float tmp;	// potrzebne do 3stawnego
     ADC_init();
     LCD_Initialize();
     LCD_Home();
@@ -67,7 +66,7 @@ int main() {
 	voltage[1] = ADC_10bit(1) / 1024. * 100;
 	two_step((uint8_t)voltage[0], (uint8_t)voltage[1]);
 	two_step_hyst((uint8_t)voltage[0], (uint8_t)voltage[1]);
-	tmp = ADC_10bit(2) / 1024. * 100; // to-do 10bit(2);
+	three_step((uint8_t)voltage[0], (uint8_t)voltage[1]);
     }
 }
 
@@ -119,16 +118,16 @@ two_step_hyst(uint8_t requested, uint8_t real) {
 }
 
 void
-three_step(uint8_t requested_1, uint8_t requested_2, uint8_t real) {
-    if (requested_1 >= real) {
-	set_led(2, 1);
-    } else if (requested_1 < real) {
+three_step(uint8_t requested, uint8_t real) {
+    if (requested == real) {
 	set_led(2, 0);
-    }
-    if (requested_2 >= real) {
 	set_led(3, 0);
-    } else if (requested_2 < real) {
+    } else if (requested > real) {
+	set_led(2, 1);
+	set_led(3, 0);
+    } else {
 	set_led(3, 1);
+	set_led(2, 0);
     }
 }
 

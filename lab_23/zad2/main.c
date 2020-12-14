@@ -68,6 +68,7 @@ int main() {
 	two_step_hyst((uint8_t)voltage[0], (uint8_t)voltage[1]);
 	three_step((uint8_t)voltage[0], (uint8_t)voltage[1]);
     }
+    return 0;
 }
 
 void
@@ -119,7 +120,7 @@ two_step_hyst(uint8_t requested, uint8_t real) {
 
 void
 three_step(uint8_t requested, uint8_t real) {
-    if (requested == real) {
+    if (abs(requested - real) < (0.5 * 100 / 5)) {  // [V]
 	set_led(2, 0);
 	set_led(3, 0);
     } else if (requested > real) {

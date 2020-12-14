@@ -1,5 +1,5 @@
-## PTM2 - Laboratorium notatka
-# 30.11.2020r.
+# PTM2 - Laboratorium notatka
+## 30.11.2020r.
 
 dwustawny:
 - ogrzewanie w domu
@@ -21,7 +21,7 @@ PID:
 - człon całkujący,
 - człon różniczkujący
 
-# 14.12.2020r.
+## 14.12.2020r.
 
 - ram - droga, caly stos programu
 - flash - wolna, mniej cykli niz eeprom, inf odczytow. 1000 programowan. Po wylaczeniu zasilania jest dalej zapisany, mozliwosc zapisu przez bootloader
